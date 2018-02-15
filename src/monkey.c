@@ -155,35 +155,57 @@ int main(int argc, char **argv)
 	};
 
     while ((opt = getopt_long(argc, argv, "bDSvhp:t:w:c:s:", long_opts, NULL)) != -1) {
-        switch (opt) {
-        case 'b':
-            mk_build_info();
-            exit(EXIT_SUCCESS);
-        case 'v':
-            mk_version();
-            exit(EXIT_SUCCESS);
-        case 'h':
-            mk_help(EXIT_SUCCESS);
-        case 'D':
-            run_daemon = 1;
-            break;
-        case 'p':
-            port_override = atoi(optarg);
-            break;
-        case 't':
-            transport_layer = mk_string_dup(optarg);
-            break;
-        case 'w':
-            workers_override = atoi(optarg);
-            break;
-        case 'c':
-            path_config = optarg;
-            break;
-        case 's':
-            server_config = optarg;
-            break;
-        case '?':
-            mk_help(EXIT_FAILURE);
+        switch (opt)
+        {
+            case 'b':
+            {
+                mk_build_info();
+                exit(EXIT_SUCCESS);
+            }
+            case 'v':
+            {
+                mk_version();
+                exit(EXIT_SUCCESS);
+            }
+            case 'h':
+            {
+                mk_help(EXIT_SUCCESS);
+            }
+            // fall through
+            case 'D':
+            {
+                run_daemon = 1;
+                break;
+            }
+            case 'p':
+            {
+                port_override = atoi(optarg);
+                break;
+            }
+            case 't':
+            {
+                transport_layer = mk_string_dup(optarg);
+                break;
+            }
+            case 'w':
+            {
+                workers_override = atoi(optarg);
+                break;
+            }
+            case 'c':
+            {
+                path_config = optarg;
+                break;
+            }
+            case 's':
+            {
+                server_config = optarg;
+                break;
+            }
+            case '?':
+            {
+                mk_help(EXIT_FAILURE);
+            }
         }
     }
 

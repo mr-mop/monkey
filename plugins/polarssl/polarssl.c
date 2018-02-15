@@ -767,11 +767,19 @@ int _mkp_network_io_send_file(int fd, int file_fd, off_t *file_offset,
         {
             case POLARSSL_ERR_NET_WANT_READ:
             case POLARSSL_ERR_NET_WANT_WRITE:
+            {
                 errno = EAGAIN;
+            }
+            // fall through
             case POLARSSL_ERR_SSL_CONN_EOF:
+            {
                 return 0;
+            }
+            // fall through
             default:
+            {
                 return -1;
+            }
         }
     }
 }
