@@ -157,7 +157,7 @@ int mk_sched_sync_counters()
     struct sched_list_node *sched;
 
 
-    MK_LT_SCHED(sched_signal_channel, "SYNC COUNTERS");
+    MK_LT_SCHED(sched->signal_channel, "SYNC COUNTERS");
 
     /* we only aim to fix the value of closed_connections */
     pthread_mutex_lock(&mutex_sched_init);
