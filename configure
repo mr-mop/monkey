@@ -294,7 +294,7 @@ check_generic() {
 		printf "#include <%s>\n" "$inc" >> check.c
 	done
 	printf "int main(int argc, char *argv) { %s; return 0; }\n" "$3" >> check.c
-	$CC -ldl -D_GNU_SOURCE -Wimplicit -Werror $4 check.c &> configure.log
+	$CC -D_GNU_SOURCE -Wimplicit -Werror $4 check.c -ldl &> configure.log
 	if [ $? -ne 0 ]; then
 		result=-1
 		echo -en $RED$BOLD"No"$END_COLOR"\n"
